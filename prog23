@@ -1,0 +1,114 @@
+Bubble Sort (Iterative) LinkedList
+Send Feedback
+Sort a given linked list using Bubble Sort (iteratively). While sorting, you need to swap the entire nodes, not just the data.
+You don't need to print the elements, just sort the elements and return the head of updated LL.
+Input format : Linked list elements (separated by space and terminated by -1)`
+
+Sample Input 1 :
+1 4 5 2 -1
+Sample Output 1 :
+1 2 4 5
+//head is the head of the linked list
+// Following is the node structure
+/**************
+class node{
+public:
+    int data;
+    node * next;
+    node(int data){
+        this->data=data;
+        this->next=NULL;
+    }
+};
+***************/
+node* bubble_sort_LinkedList_itr(node* head)
+{
+    //write your code here
+if(!head)    
+return head;
+if(head->next == NULL)    
+return head;
+int count = 0;
+node *temp = head;
+node *prev = NULL;
+node *n;
+while(temp != NULL)
+{
+    
+count++;
+temp = temp->next;
+    
+    
+}    
+    
+for(int i =0;i<count;i++)
+{
+    
+prev = NULL;
+node *c = head;    
+n=c->next;
+while(c->next != NULL)
+{
+    
+if(prev == NULL)
+{
+    
+if(c->data>c->next->data)
+{
+    
+c->next = n->next;    
+n->next = c;
+head = n;
+prev = n;
+n=c->next;    
+    
+    
+    
+}  
+else
+{
+prev = c;    
+c = c->next;    
+n = c->next;    
+    
+    
+}    
+    
+}    
+else
+{
+if(c->data>c->next->data){    
+prev->next = c->next;    
+c->next = n->next;    
+n->next = c;  
+prev = prev->next;    
+n = c->next;    
+} 
+    
+else
+{
+prev = c;    
+c = c->next;
+n = c->next;    
+    
+    
+}    
+    
+}    
+    
+
+    
+    
+    
+}    
+    
+
+    
+    
+    
+}    
+    
+    
+return head;        
+    
+}
