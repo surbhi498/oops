@@ -1,0 +1,107 @@
+Check redundant brackets
+Send Feedback
+Given a string mathematical expression, return true if redundant brackets are present in the expression. Brackets are redundant if there is nothing inside the bracket or more than one pair of brackets are present.
+Assume the given string expression is balanced and contains only one type of bracket i.e. ().
+Note: You will not get partial score for this problem. You will get marks only if all test cases are passed.
+Input Format :
+String s (Expression)
+Output Format :
+true or false
+Sample Input 1:
+((a + b)) 
+Sample Output 1:
+true
+Sample Input 2:
+(a+b) 
+Sample Output 2:
+false
+
+#include <stack>
+/*#include <stdio.h>
+#include <string.h>
+bool checkRedundantBrackets(char *input) {
+    // Write your code here
+    /*stack<char> s; 
+int c = 0;    
+int n = strlen(input);
+for(int i =0;i<n;i++)
+{
+    char ch=input[i];
+
+        if(ch!=')')
+            s.push(ch);
+        if(ch==')')
+        {
+            while(s.top()!='(')
+            {
+                c++;
+                s.pop();
+            }
+            s.pop();
+                if(c==0)
+                    return 1;
+        }
+    c=0;
+}
+   return 0;  */
+
+    #include <stack>
+    #include <stdio.h>
+    #include <string.h>
+    bool checkRedundantBrackets(char *input) {
+        // Write your code here
+        stack<char> s; 
+        int c = 0;    
+        int n = strlen(input);
+        for(int i =0;i<n;i++)
+        {
+              if(input[i] != ')')
+            {
+                s.push(input[i]);   
+            }   
+       else {
+
+                while(s.top() != '('){
+                    char x = s.top(); 
+
+                    s.pop();    
+                        
+                         c++;   
+                   
+                }  
+                
+                int y = s.top();
+                s.pop();
+               /* if(c == 0)
+            {
+
+                return true;   
+
+            } */
+           
+           if(y=='(')
+           {
+               
+               c = 0;
+               
+               
+               
+           }
+               
+               
+               
+                
+    }    
+           
+      //c=0;        
+
+
+        }
+       // return false;
+        if(c==0)
+        return true;
+        else
+        return false;
+        
+    }    
+
