@@ -1,0 +1,195 @@
+Palindrome LinkedList
+Send Feedback
+You have been given a head to a singly linked list of integers. Write a function check to whether the list given is a 'Palindrome' or not.
+ Input format :
+The first line contains an Integer 't' which denotes the number of test cases or queries to be run. Then the test cases follow.
+
+First and the only line of each test case or query contains the the elements of the singly linked list separated by a single space.
+ Remember/Consider :
+While specifying the list elements for input, -1 indicates the end of the singly linked list and hence, would never be a list element.
+ Output format :
+For each test case, the only line of output that print 'true' if the list is Palindrome or 'false' otherwise.
+ Constraints :
+1 <= t <= 10^2
+0 <= M <= 10^5
+Time Limit: 1sec
+
+Where 'M' is the size of the singly linked list.
+Sample Input 1 :
+1
+9 2 3 3 2 9 -1
+Sample Output 1 :
+true
+Sample Input 2 :
+2
+0 2 3 2 5 -1
+-1
+
+/****************************************************************
+ 
+    Following is the class structure of the Node class:
+
+        class Node
+        {
+        public:
+	        int data;
+	        Node *next;
+	        Node(int data)
+	        {
+		        this->data = data;
+		        this->next = NULL;
+	        }
+        };
+
+*****************************************************************/
+
+bool isPalindrome(Node *head)
+{
+    //Write your code here
+if(!head)
+return true;
+if(head->next == NULL)
+return true;    
+Node *temp = head; 
+Node *temp1 = head;
+Node *prev;  
+Node *head2;    
+int h = 0; 
+int count = 0; 
+    
+while(temp != NULL)
+{
+    
+count++;    
+temp = temp->next;    
+    
+}    
+int mid = count/2;    
+    
+Node *head1 = head;    
+for(int i =0;i<(mid-1);i++)    
+{
+    
+temp1 = temp1->next;    
+    
+}    
+prev = temp1;    
+temp1=temp1->next;
+prev->next = NULL;
+head2 = temp1;  
+    
+ if(!head2 && head1)
+{
+return false;    
+    
+}    
+   
+if(!head1 && head2)
+{
+    
+return false;    
+    
+}    
+    
+    
+Node *temp12 = head2;
+Node *temp123;    
+Node *prev1 = NULL;   
+while(temp12 != NULL)
+{
+    
+ //prev = temp;   
+temp123 = temp12->next; 
+temp12->next = prev1;   
+prev1 = temp12;   
+temp12 = temp123; 
+
+    
+}      
+
+while(head1 != NULL && prev1 != NULL)
+{
+    
+if(head1->data == prev1->data)
+{
+    
+h =0;    
+head1 = head1->next;
+prev1 = prev1->next;    
+}    
+else
+{
+h =1;    
+return false;
+break;    
+    
+}    
+    
+}    
+if(!h)
+{
+    
+    
+return true;    
+    
+    
+}    
+else{
+    
+return false;    
+    
+    
+}    
+    
+    
+/*if(!head)
+{
+return true;    
+    
+}  
+if(head->next == NULL)
+{
+    
+return true;    
+    
+}    
+while(temp != NULL)
+{
+    
+prev = temp;    
+while(prev->next != NULL && prev->data != prev->next->data && prev != NULL)    
+{
+temp1 = prev;    
+prev = prev->next;    
+    
+}    
+if(temp1->data == prev->data && temp1 != NULL && prev != NULL)
+{
+    
+h=0;    
+    
+    
+    
+}    
+else{
+    
+    
+h = 1; 
+return false;    
+break;    
+    
+}    
+    
+temp = temp->next;    
+}    
+if(!h)    
+return true;
+else
+{
+    
+return false;    
+}*/    
+    
+    
+}
+
